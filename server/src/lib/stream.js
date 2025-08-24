@@ -23,5 +23,12 @@ console.error(`Error upserting stream user: ${err}`)
 }
 
 export const generateStreamToken=(userId)=>{
+try {
+   const userIdStr= userId.toString();
+    return streamClient.createToken(userIdStr)
+}
+catch(err){
+console.error(`Error generating stream token: ${err}`)
 
+}
 }
