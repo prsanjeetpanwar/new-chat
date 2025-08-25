@@ -1,4 +1,5 @@
-import React from 'react'
+
+import React, { useEffect, useState } from 'react'
 import { Route, Router , Routes} from 'react-router'
 import HomePage from './pages/HomePage'
 import SignUpPage from './pages/SignUpPage'
@@ -8,9 +9,25 @@ import ChatPage from './pages/ChatPage'
 import OnBoardingPage from './pages/OnBoardingPage'
 import CallPage from './pages/CallPage'
 import toast, { Toaster } from 'react-hot-toast'
+import { useQuery } from '@tanstack/react-query'
+import { axiosInstance } from './lib/axios'
 
 
 const App = () => {
+ 
+ const {data}=useQuery({queryKey:["todos"],
+
+  queryFn:async() =>{
+    const res=await axiosInstance.get(`http://localhost:5001/api/auth/me`)
+
+    return res.data;
+  }
+ })
+
+ console.log({data});
+
+
+
   return (
     <div className='h-screen' data-theme="synthwave" >
       <h2>hello</h2>
