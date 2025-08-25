@@ -7,12 +7,14 @@ import NotificationPage from './pages/NotificationPage'
 import ChatPage from './pages/ChatPage'
 import OnBoardingPage from './pages/OnBoardingPage'
 import CallPage from './pages/CallPage'
+import toast, { Toaster } from 'react-hot-toast'
 
 
 const App = () => {
   return (
     <div className='h-screen' data-theme="synthwave" >
       <h2>hello</h2>
+      <button  onClick={()=>toast.success('Hello world!')}>Crate a toast</button>
        <Routes>
         <Route path='/' element={<HomePage/>}/>
         <Route path='/sign-up' element={<SignUpPage/>}/>
@@ -23,6 +25,7 @@ const App = () => {
       <Route path='/call' element={<CallPage/>}/>
 
        </Routes>
+        <Toaster position="top-center" reverseOrder={false} />
     </div>
   )
 }
